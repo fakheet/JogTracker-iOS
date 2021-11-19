@@ -6,5 +6,6 @@ target 'TestTask' do
   use_frameworks!
 
   # Pods for TestTask
-
+  pod 'PinLayout'
+  pod 'RxSwift'
 end

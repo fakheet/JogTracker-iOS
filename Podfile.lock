@@ -1,3 +1,20 @@
-PODFILE CHECKSUM: abcf8c6c87ce5d91d64f0f818b5809ef57486111
+PODS:
+  - PinLayout (1.10.0)
+  - RxSwift (6.2.0)
+
+DEPENDENCIES:
+  - PinLayout
+  - RxSwift
+
+SPEC REPOS:
+  trunk:
+    - PinLayout
+    - RxSwift
+
+SPEC CHECKSUMS:
+  PinLayout: e50e9a748b632905fca6e67043ea4b05d6c92186
+  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+
+PODFILE CHECKSUM: 3fb58c441d6ab0857ee5b43f0664226858d6ee59
 
 COCOAPODS: 1.11.2
