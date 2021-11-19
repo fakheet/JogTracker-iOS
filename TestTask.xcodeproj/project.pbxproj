@@ -15,6 +15,7 @@
 		1692C21B274819DE002112EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1692C219274819DE002112EA /* LaunchScreen.storyboard */; };
 		1692C22527481B54002112EA /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1692C22427481B54002112EA /* InfoView.swift */; };
 		1692C22727481E67002112EA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1692C22627481E67002112EA /* InfoViewController.swift */; };
+		1692C22B27482393002112EA /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1692C22A27482393002112EA /* CGFloat+Extensions.swift */; };
 		B9ADE5642F8F546C6829CF04 /* Pods_TestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 795206265DA4FB06A2BBC2A6 /* Pods_TestTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		1692C21C274819DE002112EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1692C22427481B54002112EA /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		1692C22627481E67002112EA /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		1692C22A27482393002112EA /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		795206265DA4FB06A2BBC2A6 /* Pods_TestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2296C99DA57DDD9FB8B2DA /* Pods-TestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTask.release.xcconfig"; path = "Target Support Files/Pods-TestTask/Pods-TestTask.release.xcconfig"; sourceTree = "<group>"; };
 		E81E32949E96DBEBAB900A2E /* Pods-TestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTask.debug.xcconfig"; path = "Target Support Files/Pods-TestTask/Pods-TestTask.debug.xcconfig"; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 		1692C20D274819DD002112EA /* TestTask */ = {
 			isa = PBXGroup;
 			children = (
+				1692C2292748235E002112EA /* Extensions */,
 				1692C22227481A8E002112EA /* Screens */,
 				1692C20E274819DD002112EA /* AppDelegate.swift */,
 				1692C210274819DD002112EA /* SceneDelegate.swift */,
@@ -102,6 +105,14 @@
 				1692C22627481E67002112EA /* InfoViewController.swift */,
 			);
 			path = Info;
+			sourceTree = "<group>";
+		};
+		1692C2292748235E002112EA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1692C22A27482393002112EA /* CGFloat+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A17E0E6CFB8CB4AECD39E4F9 /* Frameworks */ = {
@@ -239,6 +250,7 @@
 				1692C20F274819DD002112EA /* AppDelegate.swift in Sources */,
 				1692C211274819DD002112EA /* SceneDelegate.swift in Sources */,
 				1692C213274819DD002112EA /* ContentView.swift in Sources */,
+				1692C22B27482393002112EA /* CGFloat+Extensions.swift in Sources */,
 				1692C22727481E67002112EA /* InfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
