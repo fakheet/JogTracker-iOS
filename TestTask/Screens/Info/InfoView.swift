@@ -42,7 +42,7 @@ class InfoView: UIView {
         let label = UILabel()
         label.text = "INFO"
         label.textColor = .appGreen
-        label.font = .systemFont(ofSize: 25, weight: .bold)
+        label.font = .textStyle
 
         return label
     }()
@@ -50,6 +50,7 @@ class InfoView: UIView {
     let text: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.font = .textStyle5
         label.text =
             """
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the \
@@ -63,7 +64,6 @@ class InfoView: UIView {
             looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of \
             letters, as opposed to using 'Content here, content here', making it look like readable English.
             """
-        label.font = .systemFont(ofSize: 12, weight: .regular)
         return label
     }()
 }
