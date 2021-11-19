@@ -13,9 +13,6 @@ class InfoViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
 //        setupBindings()
-    
-//        tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "menu_history_item_new"),
-//                                  selectedImage: UIImage(named: "menu_history_item_new"))
     }
     
     required init?(coder: NSCoder) {
