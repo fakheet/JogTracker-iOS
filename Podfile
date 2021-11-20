@@ -8,4 +8,5 @@ target 'TestTask' do
   # Pods for TestTask
   pod 'PinLayout'
   pod 'RxSwift'
+  pod 'RxCocoa'
 end
