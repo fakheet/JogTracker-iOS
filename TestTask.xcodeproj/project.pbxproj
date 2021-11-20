@@ -24,6 +24,7 @@
 		1692C23927483A19002112EA /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1692C23827483A19002112EA /* AppFonts.swift */; };
 		1692C23B2748E671002112EA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1692C23A2748E671002112EA /* BaseViewController.swift */; };
 		1692C23F2748EFF7002112EA /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1692C23E2748EFF7002112EA /* BaseView.swift */; };
+		1692C2412748FA92002112EA /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1692C2402748FA92002112EA /* BaseViewModel.swift */; };
 		B9ADE5642F8F546C6829CF04 /* Pods_TestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 795206265DA4FB06A2BBC2A6 /* Pods_TestTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		1692C23827483A19002112EA /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		1692C23A2748E671002112EA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		1692C23E2748EFF7002112EA /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		1692C2402748FA92002112EA /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		795206265DA4FB06A2BBC2A6 /* Pods_TestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2296C99DA57DDD9FB8B2DA /* Pods-TestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTask.release.xcconfig"; path = "Target Support Files/Pods-TestTask/Pods-TestTask.release.xcconfig"; sourceTree = "<group>"; };
 		E81E32949E96DBEBAB900A2E /* Pods-TestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTask.debug.xcconfig"; path = "Target Support Files/Pods-TestTask/Pods-TestTask.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				1692C236274837AB002112EA /* RoundedButton.swift */,
 				1692C23A2748E671002112EA /* BaseViewController.swift */,
 				1692C23E2748EFF7002112EA /* BaseView.swift */,
+				1692C2402748FA92002112EA /* BaseViewModel.swift */,
 			);
 			path = "UI Components";
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				1692C23427482F65002112EA /* JogListTableCell.swift in Sources */,
 				1692C20F274819DD002112EA /* AppDelegate.swift in Sources */,
 				1692C211274819DD002112EA /* SceneDelegate.swift in Sources */,
+				1692C2412748FA92002112EA /* BaseViewModel.swift in Sources */,
 				1692C23027482DD1002112EA /* JogListView.swift in Sources */,
 				1692C213274819DD002112EA /* ContentView.swift in Sources */,
 				1692C237274837AB002112EA /* RoundedButton.swift in Sources */,
