@@ -34,7 +34,7 @@ class BaseView<ContentViewType: UIView>: UIView {
         return bar
     }()
     
-    private let contentView: ContentViewType
+    let contentView: ContentViewType
     
     private let logo: UIImageView = {
         let image = UIImage(named: "logo")?.withRenderingMode(.alwaysTemplate)
