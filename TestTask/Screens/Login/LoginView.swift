@@ -15,7 +15,7 @@ class LoginView: BaseView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        bearImage.pin.top(140).hCenter().aspectRatio()
+        bearImage.pin.top(140).hCenter().sizeToFit()
         loginButton.pin.below(of: bearImage, aligned: .center).marginTop(80).sizeToFit()
     }
 }

@@ -15,6 +15,12 @@ class JogListView: BaseView {
         contentView.addSubview(filterView)
         contentView.addSubview(tableView)
         contentView.addSubview(fabButton)
+
+        contentView.addSubview(noJogsImage)
+        contentView.addSubview(noJogsLabel)
+        contentView.addSubview(addFirstJogButton)
+
+        contentView.addSubview(picker)
     }
 
     override func setupBaseView() {
@@ -35,6 +41,17 @@ class JogListView: BaseView {
         return button
     }()
 
+    let noJogsImage = UIImageView(image: UIImage(named: "sadRoundedSquareEmoticon"))
+
+    let noJogsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Nothing is here"
+        label.font = .textStyle
+        label.textColor = .appGreyish
+        return label
+    }()
+
+    let addFirstJogButton = RoundedButton(text: "Add your first jog", color: .appGreyish)
     override func layoutSubviews() {
         super.layoutSubviews()
 
@@ -48,5 +65,11 @@ class JogListView: BaseView {
 
         fabButton.pin.bottom(32).end(32).size(47)
         fabButton.layer.cornerRadius = fabButton.bounds.height / 2
+
+        noJogsImage.pin.top(140).hCenter().sizeToFit()
+
+        noJogsLabel.pin.below(of: noJogsImage).hCenter().marginTop(30).sizeToFit()
+
+        addFirstJogButton.pin.below(of: noJogsLabel).hCenter().marginTop(140).sizeToFit()
     }
 }

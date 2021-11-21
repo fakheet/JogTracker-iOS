@@ -139,5 +139,5 @@ final class JogListTableCell: UITableViewCell {
 }
 
 private extension CGFloat {
-    static let sideMargin: CGFloat = 66
+    static let sideMargin: CGFloat = 48
 }

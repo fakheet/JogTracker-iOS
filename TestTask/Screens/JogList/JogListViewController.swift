@@ -57,16 +57,19 @@ class JogListViewController: UIViewController, UITableViewDelegate {
             self?.navigationController?.pushViewController(vc, animated: true)
         }.disposed(by: disposeBag)
 
+        let filterInputs = Observable.combineLatest(
+            _view.filterView.fromTextField.rx.text.orEmpty,
+            _view.filterView.toTextField.rx.text.orEmpty
+        ) {
+            JogDateFilterParameters(fromDate: $0, toDate: $1)
+        }
+
         let input = JogListViewModel.Input(
             loadJogs: loadJogsRelay.asObservable(),
-            createNewJog: Observable.never(),
+            createNewJog: Observable.merge(_view.addFirstJogButton.rx.tap.asObservable(),
+                                           _view.fabButton.rx.tap.asObservable()),
             filterButtonTap: _view.secondaryButton.rx.tap.asObservable(),
-            dateFilterValues: Observable.combineLatest(
-                _view.filterView.fromTextField.rx.text.orEmpty,
-                _view.filterView.toTextField.rx.text.orEmpty
-            ).map {
-                JogDateFilterParameters(fromDate: $0.0, toDate: $0.1)
-            }
+            dateFilterValues: filterInputs
         )
 
         let output = viewModel.buildOutput(from: input)
@@ -86,8 +89,15 @@ class JogListViewController: UIViewController, UITableViewDelegate {
             }
         }.disposed(by: disposeBag)
 
-        output.jogs.map { $0.isEmpty }.bind(to: _view.fabButton.rx.isHidden).disposed(by: disposeBag)
-
+        Observable.combineLatest(output.jogs, filterInputs).bind { [weak self] jogs, filterInputs in
+            guard let self = self else { return }
+            let jogsEmpty = jogs.isEmpty && filterInputs.fromDate.isEmpty && filterInputs.toDate.isEmpty
+            self._view.fabButton.isHidden = jogsEmpty
+            self._view.noJogsImage.isHidden = !jogsEmpty
+            self._view.noJogsLabel.isHidden = !jogsEmpty
+            self._view.addFirstJogButton.isHidden = !jogsEmpty
+        }.disposed(by: disposeBag)
+        
         output.jogs.bind(
             to: _view.tableView.rx.items(cellIdentifier: JogListTableCell.cellId, cellType: JogListTableCell.self)
         ) { index, model, cell in
