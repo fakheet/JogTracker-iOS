@@ -9,4 +9,5 @@ target 'TestTask' do
   pod 'PinLayout'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'Alamofire'
 end
