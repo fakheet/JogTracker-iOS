@@ -29,7 +29,10 @@
 		1692C246274911EB002112EA /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1692C245274911EB002112EA /* MenuViewController.swift */; };
 		330576D8156DAFDAD6908222 /* JogListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330579DA7FFA86240B3F6B96 /* JogListViewModel.swift */; };
 		330577BA4F286325CDB592C6 /* JogFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330575386977D3879112AD56 /* JogFilterView.swift */; };
+		3305794D5B56EF80B427A629 /* JogEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3305767D5F9F4BDDC72286E0 /* JogEditorView.swift */; };
 		33057AA0636EAAE544992B54 /* JogTrackerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33057B4881BCBDD7AFF2F5DF /* JogTrackerAPI.swift */; };
+		33057ABC92B8FFF5E3B39321 /* JogEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3305798A4C21581A767B9E7B /* JogEditorViewModel.swift */; };
+		33057D0DFAB5BB8D5D94367A /* JogEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33057A6DC7FDFB3C838F4F77 /* JogEditorViewController.swift */; };
 		B9ADE5642F8F546C6829CF04 /* Pods_TestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 795206265DA4FB06A2BBC2A6 /* Pods_TestTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +60,10 @@
 		1692C24327490DE3002112EA /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		1692C245274911EB002112EA /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		330575386977D3879112AD56 /* JogFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogFilterView.swift; sourceTree = "<group>"; };
+		3305767D5F9F4BDDC72286E0 /* JogEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogEditorView.swift; sourceTree = "<group>"; };
+		3305798A4C21581A767B9E7B /* JogEditorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogEditorViewModel.swift; sourceTree = "<group>"; };
 		330579DA7FFA86240B3F6B96 /* JogListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogListViewModel.swift; sourceTree = "<group>"; };
+		33057A6DC7FDFB3C838F4F77 /* JogEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogEditorViewController.swift; sourceTree = "<group>"; };
 		33057B4881BCBDD7AFF2F5DF /* JogTrackerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogTrackerAPI.swift; sourceTree = "<group>"; };
 		795206265DA4FB06A2BBC2A6 /* Pods_TestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2296C99DA57DDD9FB8B2DA /* Pods-TestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTask.release.xcconfig"; path = "Target Support Files/Pods-TestTask/Pods-TestTask.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 				1692C24227490DD2002112EA /* Menu */,
 				1692C22E27482DAF002112EA /* JogList */,
 				1692C22327481A9D002112EA /* Info */,
+				3305757D36B8E4761D7402B9 /* JogEditor */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -156,6 +163,7 @@
 				1692C23327482F65002112EA /* JogListTableCell.swift */,
 				330579DA7FFA86240B3F6B96 /* JogListViewModel.swift */,
 				330575386977D3879112AD56 /* JogFilterView.swift */,
+				33057B4881BCBDD7AFF2F5DF /* JogTrackerAPI.swift */,
 			);
 			path = JogList;
 			sourceTree = "<group>";
@@ -178,6 +186,16 @@
 				1692C245274911EB002112EA /* MenuViewController.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		3305757D36B8E4761D7402B9 /* JogEditor */ = {
+			isa = PBXGroup;
+			children = (
+				3305767D5F9F4BDDC72286E0 /* JogEditorView.swift */,
+				33057A6DC7FDFB3C838F4F77 /* JogEditorViewController.swift */,
+				3305798A4C21581A767B9E7B /* JogEditorViewModel.swift */,
+			);
+			path = JogEditor;
 			sourceTree = "<group>";
 		};
 		A17E0E6CFB8CB4AECD39E4F9 /* Frameworks */ = {
@@ -331,6 +349,9 @@
 				330576D8156DAFDAD6908222 /* JogListViewModel.swift in Sources */,
 				330577BA4F286325CDB592C6 /* JogFilterView.swift in Sources */,
 				33057AA0636EAAE544992B54 /* JogTrackerAPI.swift in Sources */,
+				3305794D5B56EF80B427A629 /* JogEditorView.swift in Sources */,
+				33057D0DFAB5BB8D5D94367A /* JogEditorViewController.swift in Sources */,
+				33057ABC92B8FFF5E3B39321 /* JogEditorViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
