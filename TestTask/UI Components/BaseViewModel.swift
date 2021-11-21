@@ -11,5 +11,5 @@ protocol BaseViewModel {
   associatedtype Input
   associatedtype Output
   
-  func buildOutputFrom(input: Input) -> Output
+  func buildOutput(from input: Input) -> Output
 }
