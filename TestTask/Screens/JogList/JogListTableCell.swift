@@ -24,7 +24,7 @@ final class JogListTableCell: UITableViewCell {
 
     private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
+        formatter.dateFormat = "d/M/yyyy"
         return formatter
     }()
 
@@ -120,7 +120,6 @@ final class JogListTableCell: UITableViewCell {
             .sizeToFit()
 
         distanceValueLabel.pin.after(of: distanceLabel, aligned: .center).marginStart(.marginSmall).end(.sideMargin).sizeToFit(.width)
-
 
         timeLabel.pin
             .after(of: image).marginStart(.marginLarge)

@@ -6,12 +6,6 @@ import UIKit
 
 class JogFilterView: UIView {
 
-    private static let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d/M/yyyy"
-        return formatter
-    }()
-
     init() {
         super.init(frame: .zero)
         setupSubviews()
@@ -24,16 +18,6 @@ class JogFilterView: UIView {
     private func setupSubviews() {
         backgroundColor = .appWhite2
         clipsToBounds = true
-
-        fromTextField.inputView = fromDatePicker
-        fromTextField.inputAccessoryView = fromToolbar
-        fromDatePicker.sizeToFit()
-        fromToolbar.sizeToFit()
-
-        toTextField.inputView = toDatePicker
-        toTextField.inputAccessoryView = toToolbar
-        toDatePicker.sizeToFit()
-        toToolbar.sizeToFit()
 
         addSubview(fromLabel)
         addSubview(fromTextField)
@@ -55,13 +39,9 @@ class JogFilterView: UIView {
 
     private let fromLabel = makeLabel(text: "Date from:")
     let fromTextField = makeTextField()
-    let fromDatePicker = makeDatePicker()
-    let fromToolbar = UIToolbar()
 
     private let toLabel = makeLabel(text: "Date to:")
     let toTextField = makeTextField()
-    let toDatePicker = makeDatePicker()
-    let toToolbar = UIToolbar()
 
     private static func makeLabel(text: String) -> UILabel {
         let label = UILabel()
@@ -80,22 +60,15 @@ class JogFilterView: UIView {
         return field
     }
 
-    private static func makeDatePicker() -> UIDatePicker {
-        let picker = UIDatePicker()
-        picker.datePickerMode = .date
-        picker.preferredDatePickerStyle = .wheels
-        return picker
-    }
-
-    private static func makeToolbar() -> (toolbar: UIToolbar, doneButton: UIButton) {
-        let toolbar = UIToolbar()
-        let pickerDoneButton =
-        pickerToolbar.setItems([pickerDoneButton], animated: false)
-        return toolbar
-    }
-
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         layoutSubviews()
         return CGSize(width: size.width, height: toTextField.frame.maxY + .margin)
+    }
+
+    func clearFields() {
+        fromTextField.text = ""
+        toTextField.text = ""
+        fromTextField.sendActions(for: .valueChanged)
+        toTextField.sendActions(for: .valueChanged)
     }
 }

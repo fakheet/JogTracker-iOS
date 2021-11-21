@@ -71,10 +71,14 @@ class JogListViewController: UIViewController, UITableViewDelegate {
 
         let output = viewModel.buildOutput(from: input)
 
-        output.isFilterOpened.bind(to: _view.secondaryButton.rx.isSelected).disposed(by: disposeBag)
-        output.isFilterOpened.bind { [weak self] in
+        output.isFilterOpened.bind { [weak self] isFilterOpened in
             guard let self = self else { return }
-            self._view.filterViewOpened = $0
+            self._view.filterViewOpened = isFilterOpened
+            self._view.secondaryButton.isSelected = isFilterOpened
+
+            if !isFilterOpened {
+                self._view.filterView.clearFields()
+            }
 
             UIView.animate(withDuration: 0.3) { [weak self] in
                 self?._view.setNeedsLayout()

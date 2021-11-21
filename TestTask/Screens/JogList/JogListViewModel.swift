@@ -14,6 +14,12 @@ class JogListViewModel: BaseViewModel {
     let disposeBag = DisposeBag()
     let isFilterOpenedRelay = BehaviorRelay<Bool>(value: false)
 
+    private static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d/M/yyyy"
+        return formatter
+    }()
+
     struct Input {
         var loadJogs: Observable<Void>
         var createNewJog: Observable<Void>
@@ -33,12 +39,11 @@ class JogListViewModel: BaseViewModel {
             self.isFilterOpenedRelay.accept(!self.isFilterOpenedRelay.value)
         }.disposed(by: disposeBag)
 
-//        input.dateFilterValues.bind(onNext: { print($0) }).disposed(by: disposeBag)
-
-        return Output(
-            jogs: input.loadJogs.flatMap { _ in
+        let loadedJogs = input.loadJogs
+            .flatMap { _ in
                 JogTrackerAPI.shared.fetchJogs()
-            }.map { jogsDTO in
+            }
+            .map { jogsDTO in
                 jogsDTO.map {
                     JogCellViewModel(
                         date: Date(timeIntervalSince1970: Double($0.date)),
@@ -47,7 +52,19 @@ class JogListViewModel: BaseViewModel {
                         time: $0.time
                     )
                 }
-            },
+            }
+
+        let jogOutput = Observable.combineLatest(loadedJogs, input.dateFilterValues) { jogs, filterValues -> [JogCellViewModel] in
+            let dateFrom = Self.dateFormatter.date(from: filterValues.fromDate) ?? Date(timeIntervalSince1970: 0)
+            let dateTo = Self.dateFormatter.date(from: filterValues.toDate) ?? Date()
+//            print("from: \(Self.dateFormatter.string(from: dateFrom)) to: \(Self.dateFormatter.string(from: dateTo))")
+            return jogs.filter { jog in
+                jog.date > dateFrom && jog.date < dateTo
+            }
+        }
+
+        return Output(
+            jogs: jogOutput,
             isFilterOpened: isFilterOpenedRelay.asObservable()
         )
     }
