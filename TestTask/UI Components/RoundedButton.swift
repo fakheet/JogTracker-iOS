@@ -12,10 +12,11 @@ final class RoundedButton: UIButton {
     private var primaryColor: UIColor
     private var titleFont: UIFont
         
-    init(color: UIColor, font: UIFont = .textStyle2) {
+    init(text: String, color: UIColor, font: UIFont = .textStyle2) {
         titleFont = font
         primaryColor = color
         super.init(frame: .zero)
+        setTitle(text, for: .normal)
         setStyle()
     }
     
@@ -30,7 +31,7 @@ final class RoundedButton: UIButton {
     
     private func setStyle() {
         backgroundColor = .clear
-
+        contentEdgeInsets = UIEdgeInsets(top: 19, left: 34, bottom: 19, right: 34)
         setTitleColor(primaryColor, for: .normal)
         titleLabel?.font = titleFont
         

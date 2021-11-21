@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
 
-            let initialVC = JogListViewController()
+            let initialVC = LoginViewController()
 
             window.rootViewController = AppNavigationController(rootViewController: initialVC)
             self.window = window
