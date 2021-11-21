@@ -8,30 +8,9 @@
 import UIKit
 import PinLayout
 
-class InfoView: UIView {
-    init() {
-        super.init(frame: .zero)
-        setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        scrollView.pin.all(pin.safeArea)
-        
-        title.pin.top(.margin).horizontally(.margin).sizeToFit(.width)
-        
-        text.pin.below(of: title).marginTop(.marginSmall).horizontally(.margin).sizeToFit(.width)
-        
-        scrollView.contentSize = CGSize(width: scrollView.bounds.width, height: text.frame.maxY)
-    }
-    
-    private func setupView() {
-        backgroundColor = .white
-        
-        addSubview(scrollView)
+class InfoView: BaseView {
+    override func setupSubviews() {
+        contentView.addSubview(scrollView)
         scrollView.addSubview(title)
         scrollView.addSubview(text)
     }
@@ -66,4 +45,16 @@ class InfoView: UIView {
             """
         return label
     }()
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        scrollView.pin.all()
+
+        title.pin.top(.margin).horizontally(.margin).sizeToFit(.width)
+
+        text.pin.below(of: title).marginTop(.marginSmall).horizontally(.margin).sizeToFit(.width)
+
+        scrollView.contentSize = CGSize(width: scrollView.bounds.width, height: text.frame.maxY)
+    }
 }
