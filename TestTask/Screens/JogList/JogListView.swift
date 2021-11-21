@@ -8,30 +8,45 @@
 import UIKit
 import PinLayout
 
-class JogListView: UIView {
-    init() {
-        super.init(frame: .zero)
-        setupView()
-        configureTableView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        tableView.pin.all(pin.safeArea)
-    }
-    
-    private func setupView() {
+class JogListView: BaseView {
+    override func setupSubviews() {
         backgroundColor = .white
-        
-        addSubview(tableView)
+
+        contentView.addSubview(filterView)
+        contentView.addSubview(tableView)
+        contentView.addSubview(fabButton)
     }
 
-    private func configureTableView() {
-        
+    override func setupBaseView() {
+        super.setupBaseView()
+        secondaryButton.isHidden = false
     }
-    
+
     let tableView = UITableView()
+    let filterView = JogFilterView()
+    var filterViewOpened = true
+
+    let fabButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .appGreen
+        button.setImage(UIImage(named: "add"), for: .normal)
+        button.backgroundColor = .white
+        button.isHidden = true
+        return button
+    }()
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if filterViewOpened {
+            filterView.pin.top().horizontally().sizeToFit(.width)
+        } else {
+            filterView.pin.top().horizontally().height(0)
+        }
+
+        tableView.pin.below(of: filterView).horizontally().bottom()
+
+        fabButton.pin.bottom(32).end(32).size(47)
+        fabButton.layer.cornerRadius = fabButton.bounds.height / 2
+    }
 }
