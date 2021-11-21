@@ -29,6 +29,7 @@
 		1692C246274911EB002112EA /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1692C245274911EB002112EA /* MenuViewController.swift */; };
 		330576D8156DAFDAD6908222 /* JogListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330579DA7FFA86240B3F6B96 /* JogListViewModel.swift */; };
 		330577BA4F286325CDB592C6 /* JogFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330575386977D3879112AD56 /* JogFilterView.swift */; };
+		33057AA0636EAAE544992B54 /* JogTrackerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33057B4881BCBDD7AFF2F5DF /* JogTrackerAPI.swift */; };
 		B9ADE5642F8F546C6829CF04 /* Pods_TestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 795206265DA4FB06A2BBC2A6 /* Pods_TestTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		1692C245274911EB002112EA /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		330575386977D3879112AD56 /* JogFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogFilterView.swift; sourceTree = "<group>"; };
 		330579DA7FFA86240B3F6B96 /* JogListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogListViewModel.swift; sourceTree = "<group>"; };
+		33057B4881BCBDD7AFF2F5DF /* JogTrackerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogTrackerAPI.swift; sourceTree = "<group>"; };
 		795206265DA4FB06A2BBC2A6 /* Pods_TestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2296C99DA57DDD9FB8B2DA /* Pods-TestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTask.release.xcconfig"; path = "Target Support Files/Pods-TestTask/Pods-TestTask.release.xcconfig"; sourceTree = "<group>"; };
 		E81E32949E96DBEBAB900A2E /* Pods-TestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTask.debug.xcconfig"; path = "Target Support Files/Pods-TestTask/Pods-TestTask.debug.xcconfig"; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				1692C23227482E25002112EA /* JogListViewController.swift in Sources */,
 				330576D8156DAFDAD6908222 /* JogListViewModel.swift in Sources */,
 				330577BA4F286325CDB592C6 /* JogFilterView.swift in Sources */,
+				33057AA0636EAAE544992B54 /* JogTrackerAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
