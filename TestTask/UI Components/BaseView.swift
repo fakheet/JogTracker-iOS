@@ -18,19 +18,18 @@ class BaseView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupBaseView() {
+    func setupBaseView() {
         backgroundColor = .white
         
         addSubview(appBar)
         appBar.addSubview(logo)
         appBar.addSubview(primaryButton)
-        
+        appBar.addSubview(secondaryButton)
+
         addSubview(contentView)
     }
     
-    func setupSubviews() {
-        
-    }
+    func setupSubviews() { }
     
     let appBar: UIView = {
         let bar = UIView()
@@ -52,6 +51,14 @@ class BaseView: UIView {
         button.tintColor = .white
         return button
     }()
+
+    let secondaryButton: UIButton = {
+        let button = UIButton(type: .system)
+        let image = UIImage(named: "filter")?.withRenderingMode(.alwaysTemplate)
+        button.setImage(image, for: .normal)
+        button.tintColor = .white
+        return button
+    }()
     
     let contentView = UIView()
 
@@ -66,6 +73,16 @@ class BaseView: UIView {
         
         logo.pin.start(.margin).top(pin.safeArea.top + .marginMedium).bottom(.margin).aspectRatio()
         
-        primaryButton.pin.end(.margin).top(pin.safeArea.top + .marginMedium).bottom(.margin).sizeToFit(.height)
+        primaryButton.pin
+            .end(.margin)
+            .top(pin.safeArea.top + .marginMedium)
+            .bottom(.margin)
+            .sizeToFit(.height)
+
+        secondaryButton.pin
+            .before(of: primaryButton).marginEnd(40)
+            .top(pin.safeArea.top + .marginMedium)
+            .bottom(.margin)
+            .sizeToFit(.height)
     }
 }
