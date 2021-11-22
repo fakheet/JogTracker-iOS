@@ -64,10 +64,24 @@ class JogListViewController: UIViewController, UITableViewDelegate {
             JogDateFilterParameters(fromDate: $0, toDate: $1)
         }
 
+        Observable
+            .merge(_view.addFirstJogButton.rx.tap.asObservable(),
+                   _view.fabButton.rx.tap.asObservable())
+            .bind { [weak self] in
+                let vc = JogEditorViewController(jogModel: nil) { [weak self] in
+                     self?.loadJogsRelay.accept(())
+                }
+                self?.navigationController?.present(vc, animated: true)
+            }.disposed(by: disposeBag)
+
+        _view.tableView.rx.modelSelected(JogCellViewModel.self).bind { [weak self] model in
+            let vc = JogEditorViewController(jogModel: model) { [weak self] in
+                 self?.loadJogsRelay.accept(())
+            }
+            self?.navigationController?.present(vc, animated: true)
+        }.disposed(by: disposeBag)
         let input = JogListViewModel.Input(
             loadJogs: loadJogsRelay.asObservable(),
-            createNewJog: Observable.merge(_view.addFirstJogButton.rx.tap.asObservable(),
-                                           _view.fabButton.rx.tap.asObservable()),
             filterButtonTap: _view.secondaryButton.rx.tap.asObservable(),
             dateFilterValues: filterInputs
         )
@@ -97,7 +111,7 @@ class JogListViewController: UIViewController, UITableViewDelegate {
             self._view.noJogsLabel.isHidden = !jogsEmpty
             self._view.addFirstJogButton.isHidden = !jogsEmpty
         }.disposed(by: disposeBag)
-        
+
         output.jogs.bind(
             to: _view.tableView.rx.items(cellIdentifier: JogListTableCell.cellId, cellType: JogListTableCell.self)
         ) { index, model, cell in

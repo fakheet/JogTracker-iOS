@@ -8,6 +8,8 @@
 import UIKit
 
 struct JogCellViewModel {
+    var jogId: Int = 0
+    var userId: String = ""
     var image: UIImage? = UIImage(named: "jog")
     var date: Date = Date()
     var speed: Float = 0
@@ -22,16 +24,10 @@ final class JogListTableCell: UITableViewCell {
     private let distanceLabelText = ""
     private let timeLabelText = ""
 
-    private static let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d/M/yyyy"
-        return formatter
-    }()
-
     var model: JogCellViewModel = JogCellViewModel() {
         didSet {
             image.image = model.image
-            dateLabel.text = Self.dateFormatter.string(from: model.date)
+            dateLabel.text = DateFormatter.defaultJogDateFormatter.string(from: model.date)
             distanceValueLabel.text = "\(model.distance) km"
             timeValueLabel.text = "\(model.time) min"
             speedValueLabel.text = String(format: "%.2f", model.speed) + " km/h"

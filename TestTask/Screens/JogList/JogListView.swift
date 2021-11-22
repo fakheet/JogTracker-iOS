@@ -19,8 +19,6 @@ class JogListView: BaseView {
         contentView.addSubview(noJogsImage)
         contentView.addSubview(noJogsLabel)
         contentView.addSubview(addFirstJogButton)
-
-        contentView.addSubview(picker)
     }
 
     override func setupBaseView() {

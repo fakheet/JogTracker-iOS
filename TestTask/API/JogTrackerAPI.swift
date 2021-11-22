@@ -37,7 +37,7 @@ class JogTrackerAPI {
             request.responseDecodable(of: GenericResponse<LoginUUIDResponseDTO>.self, decoder: self.defaultDecoder) { response in
                 switch response.result {
                 case .success:
-                    guard let token = response.value?.response.accessToken else { return }
+                    guard let token = response.value?.response?.accessToken else { return }
                     print("token = \(token)")
                     self.token = token
                     single(.success(()))
@@ -127,7 +127,6 @@ class JogTrackerAPI {
             return Disposables.create()
         }
     }
-}
 
 
 struct GenericResponse<T: Decodable>: Decodable {
