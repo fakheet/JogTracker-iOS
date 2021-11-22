@@ -34,90 +34,43 @@ class JogTrackerAPI {
         }
     }
 
-    func fetchJogs() -> Single<[JogDTO]> {
-        Single<[JogDTO]>.create { [weak self] single in
-            guard let self = self else {
-                return Disposables.create()
-            }
-
-            let headers: HTTPHeaders = [.authorization(bearerToken: self.token)]
-
-            let request = AF.request(self.baseURL + "/data/sync", headers: headers)
-            request.responseDecodable(of: GenericResponse<SyncGetResponse>.self, decoder: self.defaultDecoder) { response in
-                switch response.result {
-                case .success:
-                    single(.success(response.value?.response?.jogs ?? []))
-                case .failure(let error):
-                    single(.failure(error))
-                }
-            }
-            return Disposables.create()
-        }
+    func fetchJogs() -> Single<SyncGetResponse> {
+        makeRequest(path: "/data/sync", headers: [.authorization(bearerToken: token)])
     }
 
-    func addNewJog(_ jog: JogDTO) -> Single<Void> {
-        Single<Void>.create { [weak self] single in
-            guard let self = self else {
-                return Disposables.create()
-            }
-
-            let headers: HTTPHeaders = [.authorization(bearerToken: self.token)]
-
-            let parameters: [String: Any] = [
-                "date": self.sendDateFormatter.string(from: Date(timeIntervalSince1970: Double(jog.date))),
+    func addNewJog(_ jog: JogDTO) -> Single<JogTimestampedDTO> {
+        makeRequest(
+            path: "/data/jog",
+            method: .post,
+            headers: [.authorization(bearerToken: token)],
+            parameters: [
+                "date": sendDateFormatter.string(from: Date(timeIntervalSince1970: Double(jog.date))),
                 "time": jog.time,
                 "distance": jog.distance
             ]
-
-            let request = AF.request(self.baseURL + "/data/jog", method: .post, parameters: parameters, headers: headers)
-
-            request.responseDecodable(of: GenericResponse<JogTimestampedDTO>.self, decoder: self.defaultDecoder) { response in
-                switch response.result {
-                case .success:
-                    single(.success(()))
-                case .failure(let error):
-                    single(.failure(error))
-                }
-            }
-            return Disposables.create()
-        }
+        )
     }
 
-    func editJog(_ jog: JogDTO) -> Single<Void> {
-        Single<Void>.create { [weak self] single in
-            guard let self = self else {
-                return Disposables.create()
-            }
-
-            let headers: HTTPHeaders = [.authorization(bearerToken: self.token)]
-
-            let parameters: [String: Any] = [
+    func editJog(_ jog: JogDTO) -> Single<JogTimestampedDTO> {
+        makeRequest(
+            path: "/data/jog",
+            method: .put,
+            headers: [.authorization(bearerToken: token)],
+            parameters: [
                 "jog_id": jog.id,
                 "user_id": jog.userId,
-                "date": self.sendDateFormatter.string(from: Date(timeIntervalSince1970: Double(jog.date))),
+                "date": sendDateFormatter.string(from: Date(timeIntervalSince1970: Double(jog.date))),
                 "time": jog.time,
                 "distance": jog.distance
             ]
-
-            let request = AF.request(self.baseURL + "/data/jog", method: .put, parameters: parameters, headers: headers)
-
-            request.responseDecodable(of: GenericResponse<JogTimestampedDTO>.self, decoder: self.defaultDecoder) { response in
-                switch response.result {
-                case .success:
-                    single(.success(()))
-                case .failure(let error):
-                    single(.failure(error))
-                }
-            }
-            return Disposables.create()
-        }
+        )
     }
 
     func makeRequest<ReturnType: Decodable>(
         path: String,
         method: HTTPMethod = .get,
         headers: HTTPHeaders = [],
-        parameters: [String: Any],
+        parameters: [String: Any] = [:],
         onComplete: ((ReturnType?) -> ())? = nil
     ) -> Single<ReturnType> {
         Single<ReturnType>.create { [weak self] single in

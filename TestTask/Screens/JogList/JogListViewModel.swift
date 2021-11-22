@@ -35,9 +35,8 @@ class JogListViewModel: BaseViewModel {
         let loadedJogs = input.loadJogs
             .flatMap { _ in
                 JogTrackerAPI.shared.fetchJogs()
-            }
-            .map { jogsDTO in
-                jogsDTO.map {
+            }.map { result in
+                result.jogs.map {
                     JogCellViewModel(
                         jogId: $0.id,
                         userId: $0.userId,

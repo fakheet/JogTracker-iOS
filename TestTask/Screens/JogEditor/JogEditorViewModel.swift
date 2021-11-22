@@ -18,8 +18,8 @@ class JogEditorViewModel: BaseViewModel {
     func buildOutput(from input: Input) -> Output {
         Output(
             saveJogResult: input.saveJog.flatMap { pair in
-                pair.newJog ? JogTrackerAPI.shared.addNewJog(pair.jog)
-                            : JogTrackerAPI.shared.editJog(pair.jog)
+                pair.newJog ? JogTrackerAPI.shared.addNewJog(pair.jog).map { _ in () }
+                            : JogTrackerAPI.shared.editJog(pair.jog).map { _ in () }
             }
         )
     }
