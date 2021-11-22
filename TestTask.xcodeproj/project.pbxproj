@@ -35,6 +35,7 @@
 		33057ABC92B8FFF5E3B39321 /* JogEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3305798A4C21581A767B9E7B /* JogEditorViewModel.swift */; };
 		33057AD49899B6F4898EA4FD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3305705B9902E4CAF69D4110 /* LoginViewController.swift */; };
 		33057B3A6A5AB94618216430 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33057A1C68C357FAC35CADAE /* LoginViewModel.swift */; };
+		33057C8F0DD25E0776712834 /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33057AB531905DD08BFB085B /* APIModels.swift */; };
 		33057D0DFAB5BB8D5D94367A /* JogEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33057A6DC7FDFB3C838F4F77 /* JogEditorViewController.swift */; };
 		33057DA6FE38907BC8559ED2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330573C070E02587FA283978 /* LoginView.swift */; };
 		B9ADE5642F8F546C6829CF04 /* Pods_TestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 795206265DA4FB06A2BBC2A6 /* Pods_TestTask.framework */; };
@@ -73,6 +74,7 @@
 		330579DA7FFA86240B3F6B96 /* JogListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogListViewModel.swift; sourceTree = "<group>"; };
 		33057A1C68C357FAC35CADAE /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		33057A6DC7FDFB3C838F4F77 /* JogEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogEditorViewController.swift; sourceTree = "<group>"; };
+		33057AB531905DD08BFB085B /* APIModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
 		795206265DA4FB06A2BBC2A6 /* Pods_TestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2296C99DA57DDD9FB8B2DA /* Pods-TestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTask.release.xcconfig"; path = "Target Support Files/Pods-TestTask/Pods-TestTask.release.xcconfig"; sourceTree = "<group>"; };
 		E81E32949E96DBEBAB900A2E /* Pods-TestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTask.debug.xcconfig"; path = "Target Support Files/Pods-TestTask/Pods-TestTask.debug.xcconfig"; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				330576B165554BC54722B610 /* JogTrackerAPI.swift */,
+				33057AB531905DD08BFB085B /* APIModels.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				33057AD49899B6F4898EA4FD /* LoginViewController.swift in Sources */,
 				33057B3A6A5AB94618216430 /* LoginViewModel.swift in Sources */,
 				33057401DAC6F00B47441D94 /* JogTrackerAPI.swift in Sources */,
+				33057C8F0DD25E0776712834 /* APIModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
