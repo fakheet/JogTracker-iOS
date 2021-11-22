@@ -128,6 +128,33 @@ class JogTrackerAPI {
         }
     }
 
+    func makeRequest<ReturnType: Decodable>(
+        path: String,
+        method: HTTPMethod = .get,
+        headers: HTTPHeaders = [],
+        parameters: [String: Any],
+        onComplete: ((ReturnType?) -> ())? = nil
+    ) -> Single<ReturnType> {
+        Single<ReturnType>.create { [weak self] single in
+            guard let self = self else { return Disposables.create() }
+
+            let request = AF.request(self.baseURL + path, method: method, parameters: parameters, headers: headers)
+
+            request.responseDecodable(of: GenericResponse<ReturnType>.self, decoder: self.defaultDecoder) { response in
+                switch response.result {
+                case .success:
+                    if let response = response.value?.response {
+                        onComplete?(response)
+                        single(.success(response))
+                    }
+                case .failure(let error):
+                    single(.failure(error))
+                }
+            }
+            return Disposables.create()
+        }
+    }
+}
 
 struct GenericResponse<T: Decodable>: Decodable {
     let response: T?
