@@ -27,6 +27,7 @@
 		1692C2412748FA92002112EA /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1692C2402748FA92002112EA /* BaseViewModel.swift */; };
 		1692C24427490DE3002112EA /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1692C24327490DE3002112EA /* MenuView.swift */; };
 		1692C246274911EB002112EA /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1692C245274911EB002112EA /* MenuViewController.swift */; };
+		1692C248274BD264002112EA /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1692C247274BD264002112EA /* DateFormatter.swift */; };
 		33057401DAC6F00B47441D94 /* JogTrackerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330576B165554BC54722B610 /* JogTrackerAPI.swift */; };
 		330576D8156DAFDAD6908222 /* JogListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330579DA7FFA86240B3F6B96 /* JogListViewModel.swift */; };
 		330577BA4F286325CDB592C6 /* JogFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330575386977D3879112AD56 /* JogFilterView.swift */; };
@@ -62,6 +63,7 @@
 		1692C2402748FA92002112EA /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		1692C24327490DE3002112EA /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		1692C245274911EB002112EA /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		1692C247274BD264002112EA /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		3305705B9902E4CAF69D4110 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		330573C070E02587FA283978 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		330575386977D3879112AD56 /* JogFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogFilterView.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				1692C22A27482393002112EA /* CGFloat+Extensions.swift */,
 				1692C22C27482479002112EA /* AppColors.swift */,
 				1692C23827483A19002112EA /* AppFonts.swift */,
+				1692C247274BD264002112EA /* DateFormatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1692C248274BD264002112EA /* DateFormatter.swift in Sources */,
 				1692C23927483A19002112EA /* AppFonts.swift in Sources */,
 				1692C22527481B54002112EA /* InfoView.swift in Sources */,
 				1692C23427482F65002112EA /* JogListTableCell.swift in Sources */,
