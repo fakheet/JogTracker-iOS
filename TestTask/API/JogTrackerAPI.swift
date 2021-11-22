@@ -20,7 +20,6 @@ class JogTrackerAPI {
         return decoder
     }()
 
-
     func login() -> Single<Void> {
         Single<Void>.create { [weak self] single in
             guard let self = self else { return Disposables.create() }
@@ -61,6 +60,17 @@ class JogTrackerAPI {
             return Disposables.create()
         }
     }
+
+    func addJog() {
+        // Добавить форму создания/редактирования записи о беге.
+        // https://jogtracker.herokuapp.com/api/v1/data/jog
+        let request = AF.request(baseURL + "/data/jog", method: .post)
+    }
+
+    func editJog() {
+        let request = AF.request(baseURL + "/data/jog", method: .put)
+    }
+}
 
 
 struct LoginUUIDResponseRoot: Decodable {
