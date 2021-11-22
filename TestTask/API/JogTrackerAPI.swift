@@ -26,26 +26,11 @@ class JogTrackerAPI {
         return decoder
     }()
 
-    func login() -> Single<Void> {
-        Single<Void>.create { [weak self] single in
-            guard let self = self else {
-                return Disposables.create()
-            }
-
-            let request = AF.request(self.baseURL + "/auth/uuidLogin", method: .post, parameters: ["uuid": "hello"])
-
-            request.responseDecodable(of: GenericResponse<LoginUUIDResponseDTO>.self, decoder: self.defaultDecoder) { response in
-                switch response.result {
-                case .success:
-                    guard let token = response.value?.response?.accessToken else { return }
-                    print("token = \(token)")
-                    self.token = token
-                    single(.success(()))
-                case .failure(let error):
-                    single(.failure(error))
-                }
-            }
-            return Disposables.create()
+    func login() -> Single<LoginUUIDResponseDTO> {
+        makeRequest(path: "/auth/uuidLogin", method: .post, parameters: ["uuid": "hello"]) { type in
+            guard let token = type?.accessToken else { return }
+            print("token = \(token)")
+            self.token = token
         }
     }
 

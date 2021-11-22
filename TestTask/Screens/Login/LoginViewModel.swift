@@ -18,7 +18,7 @@ class LoginViewModel: BaseViewModel {
     func buildOutput(from input: Input) -> Output {
         Output(
             openMain: input.loginTap.flatMap {
-                JogTrackerAPI.shared.login()
+                JogTrackerAPI.shared.login().map { _ in () }
             }
         )
     }
