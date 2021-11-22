@@ -70,32 +70,63 @@ class JogTrackerAPI {
         }
     }
 
-    func addJog() {
-        // Добавить форму создания/редактирования записи о беге.
-        // https://jogtracker.herokuapp.com/api/v1/data/jog
-        let request = AF.request(baseURL + "/data/jog", method: .post)
+    func addNewJog(_ jog: JogDTO) -> Single<Void> {
+        Single<Void>.create { [weak self] single in
+            guard let self = self else {
+                return Disposables.create()
+            }
+
+            let headers: HTTPHeaders = [.authorization(bearerToken: self.token)]
+
+            let parameters: [String: Any] = [
+                "date": self.sendDateFormatter.string(from: Date(timeIntervalSince1970: Double(jog.date))),
+                "time": jog.time,
+                "distance": jog.distance
+            ]
+
+            let request = AF.request(self.baseURL + "/data/jog", method: .post, parameters: parameters, headers: headers)
+
+            request.responseDecodable(of: GenericResponse<JogTimestampedDTO>.self, decoder: self.defaultDecoder) { response in
+                switch response.result {
+                case .success:
+                    single(.success(()))
+                case .failure(let error):
+                    single(.failure(error))
+                }
+            }
+            return Disposables.create()
+        }
     }
 
-    func editJog() {
-        let request = AF.request(baseURL + "/data/jog", method: .put)
+    func editJog(_ jog: JogDTO) -> Single<Void> {
+        Single<Void>.create { [weak self] single in
+            guard let self = self else {
+                return Disposables.create()
+            }
+
+            let headers: HTTPHeaders = [.authorization(bearerToken: self.token)]
+
+            let parameters: [String: Any] = [
+                "jog_id": jog.id,
+                "user_id": jog.userId,
+                "date": self.sendDateFormatter.string(from: Date(timeIntervalSince1970: Double(jog.date))),
+                "time": jog.time,
+                "distance": jog.distance
+            ]
+
+            let request = AF.request(self.baseURL + "/data/jog", method: .put, parameters: parameters, headers: headers)
+
+            request.responseDecodable(of: GenericResponse<JogTimestampedDTO>.self, decoder: self.defaultDecoder) { response in
+                switch response.result {
+                case .success:
+                    single(.success(()))
+                case .failure(let error):
+                    single(.failure(error))
+                }
+            }
+            return Disposables.create()
+        }
     }
-}
-
-
-struct LoginUUIDResponseRoot: Decodable {
-    let response: LoginUUIDResponseDTO
-}
-
-struct LoginUUIDResponseDTO: Decodable {
-    let accessToken: String
-}
-
-struct SyncGetResponseRoot: Codable {
-    let response: SyncGetResponse
-}
-
-struct SyncGetResponse: Codable {
-    let jogs: [JogDTO]
 }
 
 
