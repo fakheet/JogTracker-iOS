@@ -28,11 +28,13 @@ class JogTrackerAPI {
 
     func login() -> Single<Void> {
         Single<Void>.create { [weak self] single in
-            guard let self = self else { return Disposables.create() }
+            guard let self = self else {
+                return Disposables.create()
+            }
 
             let request = AF.request(self.baseURL + "/auth/uuidLogin", method: .post, parameters: ["uuid": "hello"])
 
-            request.responseDecodable(of: LoginUUIDResponseRoot.self, decoder: self.defaultDecoder) { response in
+            request.responseDecodable(of: GenericResponse<LoginUUIDResponseDTO>.self, decoder: self.defaultDecoder) { response in
                 switch response.result {
                 case .success:
                     guard let token = response.value?.response.accessToken else { return }
@@ -47,18 +49,19 @@ class JogTrackerAPI {
         }
     }
 
-    func fetchJogs() -> Single<[JogDTO]>{
+    func fetchJogs() -> Single<[JogDTO]> {
         Single<[JogDTO]>.create { [weak self] single in
-            guard let self = self else { return Disposables.create() }
+            guard let self = self else {
+                return Disposables.create()
+            }
 
             let headers: HTTPHeaders = [.authorization(bearerToken: self.token)]
 
             let request = AF.request(self.baseURL + "/data/sync", headers: headers)
-
-            request.responseDecodable(of: SyncGetResponseRoot.self, decoder: self.defaultDecoder) { response in
+            request.responseDecodable(of: GenericResponse<SyncGetResponse>.self, decoder: self.defaultDecoder) { response in
                 switch response.result {
                 case .success:
-                    single(.success(response.value?.response.jogs ?? []))
+                    single(.success(response.value?.response?.jogs ?? []))
                 case .failure(let error):
                     single(.failure(error))
                 }
@@ -95,11 +98,8 @@ struct SyncGetResponse: Codable {
     let jogs: [JogDTO]
 }
 
-struct JogDTO: Codable {
-    let id: Int
-    let userId: String
-    let distance: Float
-    let time: Int
-    let date: Int
-}
 
+struct GenericResponse<T: Decodable>: Decodable {
+    let response: T?
+    let error_message: String?
+}
